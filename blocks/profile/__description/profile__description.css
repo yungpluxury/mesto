@@ -1,0 +1,29 @@
+.profile__description {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    margin-bottom: 0;
+    margin-top: 16px;
+}
+
+
+@media (max-width: 900px) {
+    .profile__description {
+        text-align: center;
+        margin-left: -30px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .profile__description {
+        text-align: center;
+        font-size: 14px;
+        line-height: 17px;
+        margin-left: 10px;
+    }
+}
+

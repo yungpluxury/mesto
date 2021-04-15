@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="pages/index.css">
+</head>
+<body class="body">
+    <div class="page">
+        <header class="header">
+            <img class="header__logo" src="images/logo.svg" alt="логотип шапки сайта">
+        </header>
+        <section class="profile">
+            <img src="images/avatar.jpg" class="profile__avatar" alt="аватар">
+            <div class="profile__info">
+                <div class="profile__head">
+                    <h1 class="profile__name" id="userName">Жак-Ив Кусто</h1>
+                    <div class="profile__edit-button">
+                        <img class="profile__edit-button-image" src="images/pen.svg" alt="карандаш">
+                    </div>
+                </div>
+                <p class="profile__description" id="userJob">Исследователь океана</p>
+            </div>
+            <div class="profile__add-button">
+                <img class="profile__add-button-image" src="images/plus.svg" alt="плюс">
+            </div>
+        </section>
+        <section class="elements">
+            <div class="element">
+                <img src="images/1.jpg" class="element__image" alt="картинка элемента 1">
+                <div class="element__name-container">
+                    <h2 class="element__name">Карачаевск</h2>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img src="images/2.jpg" class="element__image" alt="картинка элемента 2">
+                <div class="element__name-container">
+                    <h2 class="element__name">Гора Эльбрус</h2>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img src="images/3.jpg" class="element__image" alt="картинка элемента 3">
+                <div class="element__name-container">
+                    <h2 class="element__name">Домбай</h2>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img src="images/1.jpg" class="element__image" alt="картинка элемента 4">
+                <div class="element__name-container">
+                    <h2 class="element__name">Карачаевск</h2>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img src="images/2.jpg" class="element__image" alt="картинка элемента 5">
+                <div class="element__name-container">
+                    <h2 class="element__name">Гора Эльбрус</h2>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img src="images/3.jpg" class="element__image" alt="картинка элемента 6">
+                <div class="element__name-container">
+                    <h2 class="element__name">Домбай</h2>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+        </section>
+        <section class="popup">
+            <div class="popup__container">
+                <img class="popup__close-button" src="images/Close Icon.png"
+                alt="кнопка закрытия попапа">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form action="/my-handling-form-page" method="post" class="form">
+                    <ul class="form__elements">
+                      <li class="form__element">
+                        <input type="text" id="name" name="name" class="form__element-text">
+                      </li>
+                      <li class="form__element">
+                        <input type="text" id="description" name="description" class="form__element-text">
+                      </li>
+                      <li class="form__element">
+                        <button type="submit" class="form__save-button">Сохранить</button>
+                      </li>
+                    </ul>
+                  </form>
+            </div>
+        </section>
+        <footer class="footer">
+            <h2 class="footer__copyright">&copy; 2021 Mesto Russia</h2>
+        </footer>
+    </div>
+    <script src="scripts/index.js"></script>
+</body>
+</html>

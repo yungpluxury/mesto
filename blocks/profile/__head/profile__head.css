@@ -1,0 +1,16 @@
+.profile__head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 336px;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    .profile__head {
+        max-width: 282px;
+        margin-top: 26px;
+        justify-content: center;
+        margin-left: 10px;
+    }
+}
