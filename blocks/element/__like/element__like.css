@@ -3,10 +3,14 @@
     height: 19px;
     margin-right: 20px;
     background-image: url(../../../images/like.svg);
+    appearance: none;
+    border: none;
+    background-color: transparent;
 }
 
 
 .element__like:hover {
     opacity: 0.5;
     transition: opacity 0.3s linear;
+    cursor: url(images/cursor.png), pointer;
 }

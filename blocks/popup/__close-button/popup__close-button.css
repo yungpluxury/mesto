@@ -2,12 +2,16 @@
     position: absolute;
     top: -50px;
     right: -50px;
+    appearance: none;
+    border: none;
+    background-color: transparent;
 }
 
 
 .popup__close-button:hover {
     opacity: 0.6;
     transition: opacity 0.3s linear;
+    cursor: url(images/cursor.png), pointer;
 }
 
 
