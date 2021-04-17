@@ -9,6 +9,10 @@
     margin-bottom: 0;
     appearance: none;
     background-color: transparent;
+    background-image: url(../../../images/pen.svg);
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+    background-position: center;
 }
 
 
@@ -16,4 +20,13 @@
     opacity: 0.6;
     transition: opacity 0.3s linear;
     cursor: url(images/cursor.png), pointer;
+}
+
+
+@media (max-width: 600px) {
+    .profile__edit-button {
+        width: 18px;
+        height: 18px;
+        background-size: 7.5px 7.5px;
+    }
 }

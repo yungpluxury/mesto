@@ -5,14 +5,18 @@ let formElement = document.querySelector ('.form');
 let nameInput = formElement.querySelector ('input[name="name"]');
 const jobInput = formElement.querySelector ('input[name="description"]');
 
-function togglePopup (event) {
-    event.preventDefault();
+function openPopup (event) {
     popup.classList.toggle('popup_is-opened');
     jobInput.value = userJob.textContent;
     nameInput.value = userName.textContent;
 }
-openPopupButton.addEventListener('click', togglePopup);
-closePopupButton.addEventListener('click', togglePopup);
+
+function closePopup (event) {
+    popup.classList.toggle('popup_is-opened');
+}
+
+openPopupButton.addEventListener('click', openPopup);
+closePopupButton.addEventListener('click', closePopup);
 
 function handleOverlayClick(event) {
     if (event.target === event.currentTarget) {
@@ -25,7 +29,7 @@ function formSubmitHandler (evt) {
     evt.preventDefault();
     userJob.textContent = jobInput.value;
     userName.textContent = nameInput.value;
-    popup.classList.toggle('popup_is-opened');
+    closePopup ();
 }
 
 formElement.addEventListener('submit', formSubmitHandler); 

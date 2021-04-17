@@ -1,4 +1,12 @@
 .form__elements {
-    list-style-type: none;
     padding: 0;
+    border: none;
+    margin-bottom: 36px;
+}
+
+
+@media (max-width: 600px) {
+    .form__elements {
+        margin-bottom: 25px;
+    }
 }
