@@ -20,7 +20,7 @@ closePopupButton.addEventListener('click', closePopup);
 
 function handleOverlayClick(event) {
     if (event.target === event.currentTarget) {
-        togglePopup(event);
+        closePopup(event);
     }
 }
 popup.addEventListener('click', handleOverlayClick);
