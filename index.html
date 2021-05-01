@@ -55,13 +55,22 @@
                     <fieldset class="form__elements">
                         <input type="text" id="title" name="title" placeholder="Название" class="form__element-text">
                         <input type="url" id="link" name="link" placeholder="Ссылка на картинку" class="form__element-text">
-                        <button type="submit" class="form__save-button form__save-button_add">Сохранить</button>
+                        <button type="submit" class="form__save-button form__save-button_add">Создать</button>
                     </fieldset>
                 </form>
             </div>
         </div>
+        <div class="popup popup_image">
+            <div class="popup__container_image">
+                <img src="#" class="popup__image" alt="">
+                <p class="popup__image-description"></p>
+                <button class="popup__close-button popup__close-button_image" type="button" aria-label="close">
+                </button>
+            </div>
+        </div>
         <template id="elementTemplate">
             <div class="element">
+                <button class="element__trash-icon" type="button" aria-label="trash"></button>
                 <img src="#" class="element__image" alt="">
                 <div class="element__name-container">
                     <h2 class="element__name"></h2>
