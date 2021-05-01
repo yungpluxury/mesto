@@ -12,6 +12,8 @@ const titleInput = formAddElement.querySelector ('input[name="title"]');
 const linkInput = formAddElement.querySelector ('input[name="link"]');
 const cardTemplate = document.querySelector ('#elementTemplate');
 const cardsContainer = document.querySelector ('.elements');
+const cardLike = document.querySelector ('.element__like');
+
 
 const initialCards = [
     {
@@ -40,26 +42,33 @@ const initialCards = [
     }
   ];
 
-for (let i = 0; i < initialCards.length; i += 1) {
-    const currentCard = initialCards[i];
+initialCards.forEach(function(currentItem) {
+    const newCard = createCard(currentItem);
+    cardsContainer.append(newCard);
+});
+
+function createCard(element) {
     const newCard = cardTemplate.content.querySelector('.element').cloneNode(true);
-
-    newCard.querySelector('.element__image').src = initialCards[i].link;
-    newCard.querySelector('.element__name').textContent = initialCards[i].name;
-
-    cardsContainer.prepend(newCard);
+    newCard.querySelector('.element__image').src = element.link;
+    newCard.querySelector('.element__name').textContent = element.name;
+    return newCard
 }
 
-function saveAddButton () {
-    const titleValue = titleInput.value;
-    const newCard = cardTemplate.content.querySelector('.element').cloneNode(true);
-
-    newCard.querySelector('.element__name').textContent = titleValue;
-
-    cardsContainer.prepend(newCard);
+function saveAddButton (event) {
+    event.preventDefault();
+    const card = {
+        name:'',
+        link:''
+    };
+    card.name = titleInput.value;
+    card.link = linkInput.value;
+    cardsContainer.prepend(createCard(card));
 }
 
-formAddElement.addEventListener('submit', saveAddButton);
+function addLike (event) {
+    const like = event.target.classList.contains('.element__like');
+    
+}
 
 function openEditPopup () {
     openPopup (editPopup);
@@ -114,3 +123,5 @@ function saveEditButton (evt) {
 }
 
 formEditElement.addEventListener('submit', saveEditButton); 
+formAddElement.addEventListener('submit', saveAddButton);
+
