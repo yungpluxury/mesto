@@ -4,6 +4,7 @@
     margin-right: 20px;
     background-image: url(../../../images/like.svg);
     background-repeat: no-repeat;
+    background-position: center;
     appearance: none;
     border: none;
     background-color: transparent;
