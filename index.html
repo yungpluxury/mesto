@@ -32,39 +32,39 @@
         <footer class="footer">
             <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
         </footer>
-        <div class="popup popup_edit">
-            <div class="popup__container popup__container_edit">
-                <button class="popup__close-button popup__close-button_edit" type="button" aria-label="close">
+        <div class="popup popup_function_edit">
+            <div class="popup__container popup__container_function_edit">
+                <button class="popup__close-button popup__close-button_function_edit" type="button" aria-label="close">
                 </button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form action="#" method="post" class="form form_edit" name="formEdit">
+                <form action="#" method="post" class="form form_function_edit" name="formEdit">
                     <fieldset class="form__elements">
                         <input type="text" id="name" name="name" class="form__element-text">
                         <input type="text" id="description" name="description" class="form__element-text">
-                        <button type="submit" class="form__save-button form__save-button_edit" aria-label="save">Сохранить</button>
+                        <button type="submit" class="form__save-button form__save-button_function_edit" aria-label="save">Сохранить</button>
                     </fieldset>
                 </form>
             </div>
         </div>
-        <div class="popup popup_add">
-            <div class="popup__container popup__container_add">
-                <button class="popup__close-button popup__close-button_add" type="button" aria-label="close">
+        <div class="popup popup_function_add">
+            <div class="popup__container popup__container_function_add">
+                <button class="popup__close-button popup__close-button_function_add" type="button" aria-label="close">
                 </button>
                 <h2 class="popup__title">Новое место</h2>
-                <form action="#" method="post" class="form form_add" name="formAdd">
+                <form action="#" method="post" class="form form_function_add" name="formAdd">
                     <fieldset class="form__elements">
                         <input type="text" id="title" name="title" placeholder="Название" class="form__element-text">
                         <input type="url" id="link" name="link" placeholder="Ссылка на картинку" class="form__element-text">
-                        <button type="submit" class="form__save-button form__save-button_add">Создать</button>
+                        <button type="submit" class="form__save-button form__save-button_function_add">Создать</button>
                     </fieldset>
                 </form>
             </div>
         </div>
-        <div class="popup popup_image">
+        <div class="popup popup_function_image">
             <div class="popup__image-container">
                 <img src="#" class="popup__image" alt="название фото">
                 <p class="popup__image-description"></p>
-                <button class="popup__close-button popup__close-button_image" type="button" aria-label="close">
+                <button class="popup__close-button popup__close-button_function_image" type="button" aria-label="close">
                 </button>
             </div>
         </div>
@@ -79,6 +79,7 @@
             </div>
         </template>
     </div>
+    <script src="scripts/initialCards.js"></script>
     <script src="scripts/index.js"></script>
 </body>
 </html>

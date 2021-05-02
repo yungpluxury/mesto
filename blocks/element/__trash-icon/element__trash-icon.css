@@ -13,7 +13,7 @@
 }
 
 .element__trash-icon:hover {
-    cursor: url(images/cursor.png), pointer;
+    cursor: pointer;
     opacity: 0.5;
     transition: opacity 0.3s linear;
 }
