@@ -3,6 +3,7 @@
     height: 19px;
     margin-right: 20px;
     background-image: url(../../../images/like.svg);
+    background-repeat: no-repeat;
     appearance: none;
     border: none;
     background-color: transparent;
