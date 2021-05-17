@@ -1,17 +1,21 @@
 .form__element-text {
     width: 358px;
     margin-left: 36px;
-    margin-bottom: 30px;
     border:0;
     border-bottom:1px solid rgba(0, 0, 0, .2);
     padding-left: 0;
     padding-bottom: 13px;
+    margin-bottom: 30px;
     font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
     color: #000000;
+}
+
+.form__element-text:invalid {
+    margin-bottom: 0;
 }
 
 

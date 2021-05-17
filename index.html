@@ -37,10 +37,12 @@
                 <button class="popup__close-button popup__close-button_function_edit" type="button" aria-label="close">
                 </button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form action="#" method="post" class="form form_function_edit" name="formEdit">
+                <form action="#" novalidate method="post" class="form form_function_edit" name="formEdit">
                     <fieldset class="form__elements">
-                        <input type="text" id="name" name="name" class="form__element-text">
-                        <input type="text" id="description" name="description" class="form__element-text">
+                        <input type="text" id="name" required name="name" minlength="2" maxlength="20" class="form__element-text">
+                        <span class="form__input-error" id="name-error"></span>
+                        <input type="text" required id="description" minlength="2" maxlength="200" name="description" class="form__element-text">
+                        <span class="form__input-error" id="description-error"></span>
                         <button type="submit" class="form__save-button form__save-button_function_edit" aria-label="save">Сохранить</button>
                     </fieldset>
                 </form>
@@ -51,10 +53,12 @@
                 <button class="popup__close-button popup__close-button_function_add" type="button" aria-label="close">
                 </button>
                 <h2 class="popup__title">Новое место</h2>
-                <form action="#" method="post" class="form form_function_add" name="formAdd">
+                <form action="#" method="post" novalidate class="form form_function_add" name="formAdd">
                     <fieldset class="form__elements">
-                        <input type="text" id="title" name="title" placeholder="Название" class="form__element-text">
-                        <input type="url" id="link" name="link" placeholder="Ссылка на картинку" class="form__element-text">
+                        <input type="text" required id="title" name="title" minlength="2" maxlength="30" placeholder="Название" class="form__element-text">
+                        <span class="form__input-error " id="title-error"></span>
+                        <input type="url" id="link" required name="link" placeholder="Ссылка на картинку" class="form__element-text">
+                        <span class="form__input-error" id="link-error"></span>
                         <button type="submit" class="form__save-button form__save-button_function_add">Создать</button>
                     </fieldset>
                 </form>
@@ -80,6 +84,7 @@
         </template>
     </div>
     <script src="scripts/initialCards.js"></script>
+    <script src="scripts/validate.js"></script>
     <script src="scripts/index.js"></script>
 </body>
 </html>

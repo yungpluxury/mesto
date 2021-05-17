@@ -13,6 +13,7 @@
     text-align: center;
     color: #FFFFFF;
     margin-left: 36px;
+    margin-top: 30px;
 }
 
 
@@ -20,6 +21,13 @@
     opacity: 0.8;
     transition: opacity 0.3s linear;
     cursor: pointer;
+}
+
+
+.form__save-button:disabled {
+    background-color:#F7F7F7;
+    color: #000000;
+    border: 1px solid #000000;
 }
 
 
