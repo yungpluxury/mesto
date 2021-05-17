@@ -161,8 +161,6 @@ function handleOverlayClickImage(event) {
 function closeEditPopupByEscape(evt) {
     if (evt.key === "Escape") {
         closeEditPopup(evt);
-    } else {
-        evt.preventDefault();
     }
 }
 
