@@ -24,7 +24,6 @@ const cardsContainer = document.querySelector ('.elements');
 const popupImage = imagePopup.querySelector ('.popup__image');
 const popupDescription = imagePopup.querySelector ('.popup__image-description');
 
-
 const config = {
     formSelector: '.form',
     inputSelector: '.form__element-text',
@@ -32,7 +31,6 @@ const config = {
     inputErrorClass: 'form__element-text_type-error',
     errorActiveClass: 'form__input-error_active',
 };
-
 
 initialCards.forEach(function(currentItem) {
     const newCard = createCard(currentItem);
@@ -65,9 +63,7 @@ function deleteCard (event) {
 }
 
 function addLike (event) {
-    if (event.target.classList.contains('element__like')) {
         event.target.classList.toggle('element__like_active')
-    };
 }
 
 function saveEditButton (evt) {
@@ -80,11 +76,9 @@ function saveEditButton (evt) {
 function saveAddButton (event) {
     event.preventDefault();
     const card = {
-        name:'',
-        link:''
+        name: titleInput.value,
+        link: linkInput.value
     };
-    card.name = titleInput.value;
-    card.link = linkInput.value;
     cardsContainer.prepend(createCard(card));
     closeAddPopup();
 }
@@ -95,21 +89,19 @@ function openEditPopup () {
     nameInput.value = userName.textContent;
     updateInputValue(jobInput, userJob.textContent);
     updateInputValue(nameInput, userName.textContent);
-    document.addEventListener('keydown', closeEditPopupByEscape);
 }
 
 function openAddPopup () {
     openPopup (addPopup);
     updateInputValue(titleInput, '');
     updateInputValue(linkInput, '');
-    document.addEventListener('keydown', closeAddPopupByEscape);
 }
 
 function openImagePopup(event){
     popupImage.src = event.target.src;
     popupDescription.textContent = event.target.alt;
+    popupImage.alt = event.target.alt;
     openPopup(imagePopup);
-    document.addEventListener('keydown', closeImagePopupByEscape);
 }
 
 const updateInputValue = (inputElement, value) => {
@@ -119,61 +111,40 @@ const updateInputValue = (inputElement, value) => {
 
 function openPopup (popup) {
     popup.classList.toggle('popup_is-opened');
+    document.addEventListener('keydown', escapeCloseFunction);
+    popup.addEventListener('mousedown', handleOverlayClick); 
 }
 
 function closeEditPopup () {
     closePopup (editPopup);
-    document.removeEventListener('keydown', closeEditPopupByEscape);
 }
 
 function closeAddPopup () {
     closePopup (addPopup);
-    document.removeEventListener('keydown', closeAddPopupByEscape);
 }
 
 function closeImagePopup () {
     closePopup (imagePopup);
-    document.removeEventListener('keydown', closeImagePopupByEscape);
 }
 
 function closePopup (popup) {
     popup.classList.toggle('popup_is-opened');
+    document.removeEventListener('keydown', escapeCloseFunction);
+    popup.removeEventListener('mousedown', handleOverlayClick);
 }
 
-function handleOverlayClickEdit(event) { 
-    if (event.target === event.currentTarget) { 
-        closeEditPopup(event); 
-    } 
-} 
-
-function handleOverlayClickAdd(event) { 
-    if (event.target === event.currentTarget) { 
-        closeAddPopup(event); 
-    } 
-} 
-
-function handleOverlayClickImage(event) { 
-    if (event.target === event.currentTarget) { 
-        closeImagePopup(event); 
-    } 
-}
-
-function closeEditPopupByEscape(evt) {
-    if (evt.key === "Escape") {
-        closeEditPopup(evt);
+function escapeCloseFunction (event) {
+    if (event.key === "Escape") {
+        const popup = document.querySelector('.popup_is-opened');
+        closePopup(popup);
     }
 }
 
-function closeAddPopupByEscape(evt) {
-    if (evt.key === "Escape") {
-        closeAddPopup(evt);
-    }
-}
-
-function closeImagePopupByEscape(evt) {
-    if (evt.key === "Escape") {
-        closeImagePopup(evt);
-    }
+function handleOverlayClick (event) {
+    if (event.target === event.currentTarget) { 
+        const popup = document.querySelector('.popup_is-opened');
+        closePopup(popup);
+    } 
 }
 
 openEditPopupButton.addEventListener('click', openEditPopup);
@@ -185,9 +156,5 @@ closeImagePopupButton.addEventListener('click', closeImagePopup);
 
 formEditElement.addEventListener('submit', saveEditButton); 
 formAddElement.addEventListener('submit', saveAddButton);
-
-editPopup.addEventListener('mousedown', handleOverlayClickEdit); 
-addPopup.addEventListener('mousedown', handleOverlayClickAdd); 
-imagePopup.addEventListener('mousedown', handleOverlayClickImage);
 
 enableValidation(config);
