@@ -1,3 +1,4 @@
 .form__element-text_type-error {
     border-color: #FF0000;
+    margin-bottom: 0;
 }

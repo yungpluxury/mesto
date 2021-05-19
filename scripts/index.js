@@ -93,8 +93,6 @@ function openEditPopup () {
 
 function openAddPopup () {
     openPopup (addPopup);
-    updateInputValue(titleInput, '');
-    updateInputValue(linkInput, '');
 }
 
 function openImagePopup(event){

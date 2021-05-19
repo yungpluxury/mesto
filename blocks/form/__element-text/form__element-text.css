@@ -14,9 +14,7 @@
     color: #000000;
 }
 
-.form__element-text:invalid {
-    margin-bottom: 0;
-}
+
 
 
 @media (max-width: 600px) {
