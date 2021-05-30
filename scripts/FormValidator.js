@@ -60,11 +60,6 @@ export default class FormValidator {
     this._buttonElement.classList.add(this._disableButtonClass);
     this._buttonElement.disabled = true;
   }
-
-  enableSubmitButton() {
-    this._buttonElement.classList.remove(this._disableButtonClass);
-    this._buttonElement.disabled = false;
-  }
   
   enableValidation() {
       this._setEventListeners()
