@@ -40,36 +40,6 @@ profileEditFormValidator.enableValidation();
 const cardAddFormValidator = new FormValidator(config, formAddElement);
 cardAddFormValidator.enableValidation();
 
-
-function saveEditButton (evt) {
-    evt.preventDefault();
-    userJob.textContent = jobInput.value;
-    userName.textContent = nameInput.value;
-    closeEditPopup ();
-}
-
-function saveAddButton (event) {
-    event.preventDefault();
-    const card = {
-        name: titleInput.value,
-        link: linkInput.value
-    };
-    addCard(card);
-    closeAddPopup();
-}
-
-function openEditPopup () {
-    openPopup (editPopup);
-    jobInput.value = userJob.textContent;
-    nameInput.value = userName.textContent;
-    updateInputValue(jobInput, userJob.textContent);
-    updateInputValue(nameInput, userName.textContent);
-}
-
-function openAddPopup () {
-    openPopup (addPopup);
-}
-
 const updateInputValue = (inputElement, value) => {
     inputElement.value = value;
     inputElement.dispatchEvent(new Event('input'));
@@ -79,18 +49,6 @@ function openPopup (popup) {
     popup.classList.toggle('popup_is-opened');
     document.addEventListener('keydown', escapeCloseFunction);
     popup.addEventListener('mousedown', handleOverlayClick); 
-}
-
-function closeEditPopup () {
-    closePopup (editPopup);
-}
-
-function closeAddPopup () {
-    closePopup (addPopup);
-}
-
-function closeImagePopup () {
-    closePopup (imagePopup);
 }
 
 function closePopup (popup) {
@@ -113,15 +71,34 @@ function handleOverlayClick (event) {
     } 
 }
 
-openEditPopupButton.addEventListener('click', openEditPopup);
-openAddPopupButton.addEventListener('click', openAddPopup);
+openEditPopupButton.addEventListener('click', () => {
+    openPopup (editPopup);
+    jobInput.value = userJob.textContent;
+    nameInput.value = userName.textContent;
+    updateInputValue(jobInput, userJob.textContent);
+    updateInputValue(nameInput, userName.textContent);
+});
+openAddPopupButton.addEventListener('click', () => openPopup (addPopup));
 
-closeEditPopupButton.addEventListener('click', closeEditPopup);
-closeAddPopupButton.addEventListener('click', closeAddPopup);
-closeImagePopupButton.addEventListener('click', closeImagePopup);
+closeEditPopupButton.addEventListener('click', () => closePopup (editPopup));
+closeAddPopupButton.addEventListener('click', () => closePopup (addPopup));
+closeImagePopupButton.addEventListener('click', () => closePopup (imagePopup));
 
-formEditElement.addEventListener('submit', saveEditButton); 
-formAddElement.addEventListener('submit', saveAddButton);
+formEditElement.addEventListener('submit', (event) => {
+    event.preventDefault();
+    userJob.textContent = jobInput.value;
+    userName.textContent = nameInput.value;
+    closePopup (editPopup);
+}); 
+formAddElement.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const card = {
+        name: titleInput.value,
+        link: linkInput.value
+    };
+    addCard(card);
+    closePopup(addPopup);
+});
 
 const addCard = (item) => {
     const card = new Card('#elementTemplate', item.name, item.link);
