@@ -1,5 +1,6 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
+import { initialCards } from './initialCards.js';
 
 const openEditPopupButton = document.querySelector ('.profile__edit-button');
 const openAddPopupButton = document.querySelector ('.profile__add-button');
@@ -123,8 +124,9 @@ formEditElement.addEventListener('submit', saveEditButton);
 formAddElement.addEventListener('submit', saveAddButton);
 
 const addCard = (item) => {
-    const newCard = new Card('#elementTemplate', item.name, item.link);
-    newCard.generateCard();
+    const card = new Card('#elementTemplate', item.name, item.link);
+    const newCard = card.generateCard();
+    document.querySelector('.elements').prepend(newCard);
 };
 
 initialCards.forEach ((item) => {
