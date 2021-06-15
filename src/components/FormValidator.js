@@ -61,9 +61,15 @@ export default class FormValidator {
     this._buttonElement.disabled = true;
   }
 
-  firstOpenEditPopup() {
+  enableSubmitButton() {
     this._buttonElement.classList.remove(this._disableButtonClass);
     this._buttonElement.disabled = false;
+  }
+
+  hideErrors() {
+    this._inputList.forEach((inputElement) => {
+      this._hideError(inputElement);
+    });
   }
   
   enableValidation() {

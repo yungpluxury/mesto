@@ -1,11 +1,11 @@
-import Card from './Card.js';
+import Card from '../components/Card.js';
 import '../pages/index.css';
-import FormValidator from './FormValidator.js';
-import { initialCards } from './initialCards.js';
-import Section from './Section.js';
-import PopupWithForm from './PopupWithForm.js';
-import PopupWithImage from './PopupWithImage.js';
-import UserInfo from './UserInfo.js';
+import FormValidator from '../components/FormValidator.js';
+import { initialCards } from '../components/initialCards.js';
+import Section from '../components/Section.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import UserInfo from '../components/UserInfo.js';
 import {openEditPopupButton,
         openAddPopupButton,
         editPopup,
@@ -69,6 +69,7 @@ const popupWithAddForm = new PopupWithForm(addPopup, (inputValues) => {
 popupWithAddForm.setEventListeners();
 openAddPopupButton.addEventListener('click', () => {
     popupWithAddForm.open();
+    cardAddFormValidator.hideErrors();
 });
 
 
@@ -78,7 +79,8 @@ const popupWithEditForm = new PopupWithForm(editPopup, () => {
 popupWithEditForm.setEventListeners();
 openEditPopupButton.addEventListener('click', () => {
     const userData = userInfo.getUserInfo();
-    profileEditFormValidator.firstOpenEditPopup();
+    profileEditFormValidator.enableSubmitButton();
+    profileEditFormValidator.hideErrors();
     nameInput.value = userData.name;
     jobInput.value = userData.description;
     popupWithEditForm.open();
