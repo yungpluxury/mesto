@@ -44,44 +44,47 @@ cardAddFormValidator.enableValidation();
 
 const userInfo = new UserInfo({name: profileNameSelector, description: profileDescriptionSelector, avatar: profileAvatarSelector});
 
-const popupWithEditForm = new PopupWithForm(editPopup, (values) => {
-    popupWithEditForm.renderLoading(true);
+const popupEditProfile = new PopupWithForm(editPopup, (values) => {
+    popupEditProfile.renderLoading(true);
     api.setUserInfoByApi(values)
+    .then(() => {
+        popupEditProfile.close()
+    })
     .catch((error) => console.log(error))
-    .finally(() => popupWithAddForm.renderLoading(false));
+    .finally(() => popupEditProfile.renderLoading(false));
 });
-popupWithEditForm.setEventListeners();
+popupEditProfile.setEventListeners();
 
-const popupWithAvatarEditForm = new PopupWithForm(avatarEditPopup, (values) => {
+const popupEditAvatar = new PopupWithForm(avatarEditPopup, (values) => {
     api.changeUserAvatar(values)
         .then((data) => {
-            popupWithAvatarEditForm.renderLoading(true);
+            popupEditAvatar.renderLoading(true);
             userInfo.setUserAvatar(data);
             avatarEditFormValidator.disableSubmitButton();
-            popupWithAvatarEditForm.close();
+            popupEditAvatar.close();
         })
         .catch((error) => console.log(error))
-        .finally(() => popupWithAvatarEditForm.renderLoading(false));
+        .finally(() => popupEditAvatar.renderLoading(false));
 });
-popupWithAvatarEditForm.setEventListeners();
+popupEditAvatar.setEventListeners();
 
 const popupWithImage = new PopupWithImage(imagePopup);
 popupWithImage.setEventListeners();
 
-const popupWithAddForm = new PopupWithForm(addPopup, (values) => {
-    popupWithAddForm.renderLoading(true);
+const popupAddCard = new PopupWithForm(addPopup, (values) => {
+    popupAddCard.renderLoading(true);
     api.addCard(values)
         .then((data) => {
             const card = createCard(data);
             const cardElement = card.generateCard();
             cardList.addItem(cardElement);
             cardAddFormValidator.disableSubmitButton();
-            popupWithAddForm.close();
+            popupAddCard.close();
         })
         .catch((error) => console.log(error))
-        .finally(() => popupWithAddForm.renderLoading(false));
+        .finally(() => popupAddCard.renderLoading(false));
 });
-popupWithAddForm.setEventListeners();
+popupAddCard.setEventListeners();
 
 const popupWithConfirmDeleteForm = new PopupWithConfirm(confirmDeletePopup);
 popupWithConfirmDeleteForm.setEventListeners();
@@ -92,15 +95,16 @@ openEditPopupButton.addEventListener('click', () => {
     profileEditFormValidator.hideErrors();
     nameInput.value = userData.name;
     jobInput.value = userData.description;
-    popupWithEditForm.open();
+    popupEditProfile.open();
 });
 
 openAvatarEditPopupButton.addEventListener('click', () => {
-    popupWithAvatarEditForm.open();
+    popupEditAvatar.open();
+    avatarEditFormValidator.hideErrors();
 });
 
 openAddPopupButton.addEventListener('click', () => {
-    popupWithAddForm.open();
+    popupAddCard.open();
     cardAddFormValidator.hideErrors();
 });
 
@@ -111,7 +115,23 @@ const createCard = (data) => {
                 popupWithImage.open(data);
             },
         likeClickAction: () => {
-                card.cardLike();
+            if(!(card.likedByUser())) {
+                api.addLike(card._id)
+                  .then((data) => {
+                    card.updateLikesCount(data.likes);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+              } else {
+                api.deleteLike(card._id)
+                  .then((data) => {
+                    card.updateLikesCount(data.likes);
+                  })
+                  .catch((err) => {
+                    console.log(err)
+                  });
+            };
             },
         confirmDeleteAction: () => {
             popupWithConfirmDeleteForm.open();
@@ -128,7 +148,6 @@ const createCard = (data) => {
             }
         },
         cardTemplate,
-        api,
         userId);
     return card
 };
